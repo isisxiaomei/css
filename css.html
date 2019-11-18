@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style type="text/css">
+    /* //这种情况避免的办法是：只设置一个盒子，免得分赃不均 */
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+        div {
+            width: 200px;
+            height: 200px;
+            background: red;
+            float: left;
+        }
+        /*此时下面两个div块发生了：外边距合并，垂直的块盒子，合并后的外边距以最大的外边距为准*/
+        div:first-child {
+            margin-bottom: 30px;
+        }
+        div:last-child {
+            margin-top: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+  </body>
+</html>

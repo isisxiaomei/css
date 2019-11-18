@@ -65,12 +65,7 @@ h1 {
   color: blue;
 }
 
-/* 示例1：改进版列表  下面两种方式都可以*/
-h1,
-.special {
-  color: blue;
-}
-/* 或者 */
+/* 示例1：改进版列表 */
 h1,
 .special {
   color: blue;
@@ -272,8 +267,8 @@ li[class*="a"] { color: red; }
 
 - 为定位到锚点目标后，锚点目标的状态设置属性，这里定位到的锚点设置成红色
 
-```css
-/* 示例1：点击链接跳到指定锚点位置锚点的样式 */
+```html
+<!-- 示例1：点击链接跳到指定锚点位置锚点的样式 -->
 <style>
     p:target {
         background-color: red;
@@ -504,11 +499,11 @@ h1 ~ p {
 
 ```css
 /* 示例1： *#foo生效 */
-*#foo {
+#foo {
   color: green;
 }
 
-*[id="foo"] {
+p[id="foo"] {
   color: purple;
 }
 
