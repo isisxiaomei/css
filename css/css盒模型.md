@@ -1,3 +1,29 @@
+> CSS标准盒模型大小默认是`content+padding+border`；(CSS3中可以使用box-size设置)
+
+![](../css/image/Snipaste_2019-11-24_17-43-57.png)
+# 0 盒模型基础属性
++ width
+    - min-width
+    - max-width
++ height
+    - min-height
+    - max-height
++ padding
+    - padding-top
+    - padding-right
+    - padding-bottom
+    - padding-left
++ border
+    - border-top
+    - border-right
+    - border-bottom
+    - border-left
++ margin
+    - margin-top
+    - margin-right
+    - margin-bottom
+    - margin-left
+
 # 1 内边距
 + padding: 内边距（简写顺时针）
 ```html
@@ -71,11 +97,19 @@ div,h1,h2,h3,h4p,input,textare {
 }
 ```
 
-## 3.3 块元素垂直合并问题
-+ 只有垂直方向有外边距合并问题，水平方向没有
+## 3.3 外边距合并
++ 背景：在`正常流(Normal Flow)`下，外边距会进行合并; 合并后的外边距以最大的外边距为准
 + 这种情况避免的办法是：只设置一个盒子，免得分赃不均
++ 浮动元素和绝对定位元素的外边距不会合并。
+```html
+<!-- 示例1： -->
+<h1>好好学习</h1>
+<h2>天天向上</h2>
+h1 { margin: 20px 0; }
+h2 { margin: 30px 0; }
+```
 ```css
-/* 示例1： */
+/* 示例2： */
     <style type="text/css">
         div {
             width: 200px;
@@ -99,5 +133,81 @@ div,h1,h2,h3,h4p,input,textare {
 //解决塌陷的3个办法：
 1. 给父块元素定义一个1像素的上边框（border=1px solid red）
 2. 给父元素定义一个1像素的上内边距（padding=1px）
-3. overflow: hidden
+3. `overflow: hidden` 这个必须给父盒子加
+```
+```html
+<!-- 示例1： -->
+<style type="text/css">
+      .box {
+        width: 200px;
+        height: 200px;
+        background: yellow;
+        overflow: hidden
+      }
+      .son {
+        width: 100px;
+        height: 100px;
+        margin-top: 30px;
+        background: red;
+      }
+</style>
+<div class="box">
+    <div class="son"></div>
+</div>
+```
+## 3.5 外边距为负
++ 设置 margin-left margin-right 为负数可以增加块状元素宽度
+```html
+<div class="T"></div>
+.T {
+  width: 30px;
+  height: 210px;
+  margin: 50px auto;
+  background: orange;
+}
+
+.T::after {
+  content: '';
+  height: 30px;
+  margin: 0 -70px;
+  display: block;
+  background: limegreen;
+}
+```
+# 4 相关属性
+## 4.1 outline
++ `outline`: 用来设置一个或多个单独的轮廓；
++ `outline: 1px solid white; 宽度 | 样式 | 颜色`
+    - 可以通过设置 outline: 0 或 outline: none 去除轮廓
++ 轮廓与边框区别：轮廓不占据空间，它们被描绘于内容之上
+```html
+<!-- 示例1： 给button加了轮廓-->
+<style type="text/css">
+      button:hover { outline: 10px solid red; }
+</style>
+<button>xxx</button>
+```
+
+## 4.2 overflow
++ `overflow`：定义当一个元素的内容太大而无法适应 块级格式化上下文 时候该做什么
+    - visible 默认值 显示溢出的内容
+    - hidden 内容被裁剪且不会出现滚动条
+    - scroll 内容被裁剪但出现滚动条
+    - auto 由浏览器决定
+```css
+/* 示例1： */
+/* 默认值。内容不会被修剪，会呈现在元素框之外 */
+overflow: visible;
+
+/* 内容会被修剪，并且其余内容不可见 */
+overflow: hidden;
+
+/* 内容会被修剪，浏览器会显示滚动条以便查看其余内容 */
+overflow: scroll;
+
+/* 由浏览器定夺，如果内容被修剪，就会显示滚动条 */
+overflow: auto;
+
+/* 规定从父元素继承overflow属性的值 */
+overflow: inherit;
 ```
