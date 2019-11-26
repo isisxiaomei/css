@@ -53,6 +53,7 @@
 
 - 动画: 使元素从一种样式逐渐变化为另一种样式的效果
 - 注意：如果使用百分比，百分比是相对于整个动画执行时间的
+- 注意：动画每个阶段偏移的位置坐标不是相对于上一次位置坐标，而是针对动画最开始的坐标
 - 简写：简写注意两个时间前面的时间永远便是动画时间  延迟时间在后
 ```css
 /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
