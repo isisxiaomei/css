@@ -2,38 +2,49 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
-
+    <title>定位盒子水平居中</title>
     <style>
-      .father {
-        width: 200px;
-        height: 200px;
-        background-color: pink;
-        position: relative;
-        top: 50px;
-        left: 50px;
-      }
-      /* son说明父元素有定位时，son偏移原点以父元素为基准 */
-      .son {
-        width: 100px;
+      /* .box {
+        width: 400px;
         height: 100px;
-        left: 50px;
-        top: 50px;
-        position: absolute;
-        background-color: blue;
+        background: pink;
+        display: flex;
       }
-      /* son2说明son元素浮动了 */
+      .son1 {
+        flex: 1;
+        background: rgb(31, 27, 27);
+      }
       .son2 {
-        width: 70px;
-        height: 70px;
-        background: indianred;
+        flex: 2;
+        background: greenyellow;
       }
+      .son3 {
+        flex: 1;
+        background: blue;
+      } */
+      /* 0011  0020*/
+      li:hover{
+        color: blue;
+      }
+      
+      li:hover{
+        color: red;
+      }
+      
     </style>
   </head>
   <body>
-    <div class="father">
-      <div class="son"></div>
+      <ul id="u1">
+          <li class="one">one</li>
+          <li class="two">two</li>
+        </ul>
+    <!-- <div class="box">
+      <div class="son1"></div>
       <div class="son2"></div>
-    </div>
+      <div class="son3"></div>
+
+      
+      
+    </div> -->
   </body>
 </html>

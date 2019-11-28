@@ -17,3 +17,13 @@
   margin-right: auto;
 }
 ```
+# 4 绝对定位水平居中问题
++ `margin:0 auto;` 只能让`标准流`的盒子居中对齐，但是加了绝对定位的盒子margin-auto水平居中无效
++ 定位盒子水平垂直居中算法：
+```js
+1. 首先left 50% 父盒子的一半大小
+2. 然后走自己盒子外边距负的一半值 margin-left
+```
+
+
+https://blog.csdn.net/qq_27576607/article/details/78697812

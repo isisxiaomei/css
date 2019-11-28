@@ -22,7 +22,7 @@ h1 {
 
 ## 1.3 通配符选择器
 
-- \*指所有的标签
+- *：指所有的标签
 
 ```css
 /* 示例1 */
@@ -406,7 +406,7 @@ This text has special styles when you highlight it.
 
 ## 5.2 并集选择器
 
-- 如果样式各标签样式一样，可以采用逗号隔开的方式
+- 如果各标签样式一样，可以采用逗号隔开的方式
 
 ```css
 /* 示例1： */
@@ -486,17 +486,28 @@ h1 ~ p {
           <p>I am another paragraph.</p>    /*被选中*/
 </article>
 ```
+## 5.6 多类名选择器
+```css
+/* 示例1： */
+.tt.ss {
+  color: red;
+}
+
+<div class="tt ss">I am a div</div>
+```
+
 # 6. 选择器优先级
 + `* + > ~ ' ' ,`：关系操作符的选择器对优先级没有影响
 + **备注**：优先级是针对于同一个元素使用样式时才存在的
-+ **优先级**：（优先级递增）
-    - 标签选择器和伪元素选择器
++ **优先级心得**：（优先级递增）
+    - 标签选择器和伪元素选择器（伪元素相当于也是元素）
     - 类选择器和属性选择器和伪类选择器
     - id选择器
 + **优先级权重**：
-    - `无穷大 > style行内样式（1000） > id选择器（0100） > 类选择器（0010） > 标签选择器（0001）> 继承或者*的贡献（0000）`
+    - `无穷大 > style行内样式（1,0,0,0） > id选择器（0,1,0,0） > 类选择器（0,0,1,0） > 标签选择器（0,0,0,1）> 继承或者*的贡献（0,0,0,0）`
     - `color：blue!important`：只要看到!important  优先级最高并且一旦出现优先执行
-
++ **权重比较**：
++ A,B,C,D四组值，从左到右，分组比较，如果A相同，比较B，如果B相同，比较C，如果C相同，比较D，如果D相同，后定义的优先
 ```css
 /* 示例1： *#foo生效 */
 #foo {
@@ -506,6 +517,16 @@ h1 ~ p {
 p[id="foo"] {
   color: purple;
 }
-
 <p id="foo">I am a sample text.</p>
+```
+
+
+```js
+// 示例1;优先级
+p:first-letter          // 0,0,0,2=0001标签+0001伪元素
+.logo[id='site-logo']   // 0,0,2,0= 0010类+0010属性
+body header div nav ul li div p a span em {color: red}  // 0,0,0,11
+.count {color: blue}    // 0,0,1,0
+#header nav ul li.current {color: red; font-weight: bold;}  //0, 1, 1, 3
+li:hover {color: blue !important; font-weight: normal;}   // 0,0,1,1;但是有!important 所以优先执行
 ```
