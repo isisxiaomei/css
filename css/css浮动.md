@@ -140,6 +140,26 @@ both | 清除两边浮动影响
 ![](../css/image/Snipaste_2019-11-20_23-57-54.png)
 
 
-# 3. overflow和
+# 浮动总结
+```js
+// 浮动：脱离文档流
+float: right | left | none;
+
+// 清除浮动
+clear: left | right | both
+
+// 浮动塌陷：父元素没有设置高度时，子元素都浮动，此时父元素的高度就为0了，因为没有子元素撑开高度（如果手动设置父元素高度就不会存在这种问题了）
+
+// 解决浮动塌陷问题
+1. 新增加个子元素 div  clear: both
+2. 给父元素增加(原理跟1一样)  .clearfix::after{
+    content: '',
+    // 因为默认的伪元素是行元素
+    display: block,
+    clear: both
+}
+3. 给父元素增加(溢出隐藏) overflow: hidden  //（原理：因为overflow: hidden触发BFC规则，bfc去渲染页面时浮动的元素也参与计算高度）
+4. 手动给父元素设置高度
+```
 
 

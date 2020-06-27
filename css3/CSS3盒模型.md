@@ -29,3 +29,15 @@
 <br />
 <div class="border-box">Border box</div>
 ```
+
+# 盒模型总结
+```js
+// 标准盒模型
+width属性 = 内容本身的宽度（不包含padding和border和margin）
+
+// 怪异盒模型：ie6以及ie6以下的浏览器 不写doctype文档声明时出现
+width属性 = 内容宽度+padding+border
+
+// box-sizing: content-box 标准盒模型
+// box-sizing: border-box  怪异盒模型
+```
